@@ -11,6 +11,7 @@ class LotterySystem {
         this.excelData = null; // 保存Excel文件的原始数据
         
         this.initElements();
+        this.disableAllButtons();
         this.initEventListeners();
         this.createStarField();
         this.peopleFileInput.remove(); // 移除第二个文件输入框，因为我们只需要一个
@@ -38,10 +39,18 @@ class LotterySystem {
         this.resetBtn.addEventListener('click', () => this.resetLottery());
     }
 
+    disableAllButtons() {
+        if (this.startBtn && this.resetBtn && this.prizeButtons) {
+            this.startBtn.disabled = true;
+            this.resetBtn.disabled = true;
+            this.prizeButtons.innerHTML = '';
+        }
+    }
+
     async handleExcelFile(event) {
         const file = event.target.files[0];
         const data = await this.readExcelFile(file);
-        this.excelData = data; // 保存Excel数据
+        this.excelData = data;
         
         this.prizes = [];
         this.people = [];
@@ -62,8 +71,15 @@ class LotterySystem {
             }
         });
 
-        // 保存原始人员数据
+        if (this.prizes.length === 0 || this.people.length === 0) {
+            alert('Excel文件格式不正确或数据为空！请确保文件包含有效的奖项和参与者数据。');
+            this.disableAllButtons();
+            return;
+        }
+
         this.originalPeople = [...this.people];
+
+        this.resetBtn.disabled = false;
 
         this.createPrizeButtons();
         if (this.prizes.length > 0) {
@@ -239,6 +255,7 @@ class LotterySystem {
         
         if (!this.excelData) {
             alert('没有找到已上传的Excel数据，请先上传文件！');
+            this.disableAllButtons();
             return;
         }
 
@@ -246,7 +263,6 @@ class LotterySystem {
             prize.remaining = prize.count;
         });
         
-        // 从缓存的原始数据恢复人员列表
         this.people = [...this.originalPeople];
         
         this.winners.clear();
@@ -265,7 +281,7 @@ class LotterySystem {
     }
 
     updateStartButtonState() {
-        if (this.currentPrize && this.currentPrize.remaining <= 0) {
+        if (!this.excelData || (this.currentPrize && this.currentPrize.remaining <= 0)) {
             this.startBtn.disabled = true;
         } else {
             this.startBtn.disabled = false;
