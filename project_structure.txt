@@ -1,0 +1,10 @@
+lottery/
+├── index.html
+├── css/
+│   └── style.css
+├── js/
+│   ├── main.js
+│   └── xlsx.full.min.js
+├── assets/
+│   └── background.jpg
+└── README.md 
