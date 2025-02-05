@@ -1,0 +1,136 @@
+.admin-section {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.generate-section {
+    margin-bottom: 30px;
+}
+
+.input-group {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.input-group input {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    font-size: 16px;
+}
+
+.admin-btn {
+    padding: 10px 20px;
+    background: #e74c3c;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.admin-btn:hover {
+    background: #c0392b;
+}
+
+.admin-btn.danger {
+    background: #c0392b;
+}
+
+.admin-btn.danger:hover {
+    background: #962d22;
+}
+
+.key-filters {
+    display: flex;
+    gap: 10px;
+    margin: 15px 0;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    padding: 8px 15px;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.filter-btn.active {
+    background: #e74c3c;
+}
+
+.key-list {
+    max-height: 400px;
+    overflow-y: auto;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.key-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    margin: 5px 0;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+}
+
+.key-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.key-code {
+    font-family: monospace;
+    font-size: 16px;
+}
+
+.key-status {
+    padding: 4px 8px;
+    border-radius: 3px;
+    font-size: 12px;
+}
+
+.status-inactive {
+    background: #3498db;
+}
+
+.status-active {
+    background: #27ae60;
+}
+
+.status-expired {
+    background: #95a5a6;
+}
+
+.copy-btn {
+    padding: 5px 10px;
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    border-radius: 3px;
+    color: white;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.copy-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.admin-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+    justify-content: flex-end;
+} 

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>公司年会抽奖系统</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1 id="mainTitle" class="editable-title" contenteditable="true" spellcheck="false">公司年会抽奖</h1>
+        
+        <!-- 卡密验证区域 -->
+        <div id="verifySection" class="verify-section">
+            <h3>请先验证卡密</h3>
+            <div class="input-group">
+                <input type="text" id="keyInput" placeholder="请输入16位卡密" maxlength="16">
+                <button id="verifyBtn" class="verify-btn">验证卡密</button>
+            </div>
+            <p id="keyStatus" class="key-status"></p>
+        </div>
+        
+        <div id="lotteryContent" class="lottery-content" style="display: none;">
+            <div class="setup-section">
+                <div class="file-upload">
+                    <h3>上传Excel文件</h3>
+                    <div class="file-actions">
+                        <div class="custom-file-upload">
+                            <label for="prizeFile" class="upload-btn">
+                                <i class="upload-icon">📤</i>选择文件
+                            </label>
+                            <input type="file" id="prizeFile" accept=".xlsx,.xls" style="display: none;">
+                            <span id="fileName" class="file-name">未选择文件</span>
+                        </div>
+                        <a href="template/lottery_template.xlsx" download class="template-btn">
+                            <i class="download-icon">📥</i>下载模板
+                        </a>
+                    </div>
+                    <p class="file-hint">Excel文件需包含以下列：Award(奖项)、Amount(数量)、Gift(奖品)、Name(人员名单)</p>
+                </div>
+                
+                <div class="settings">
+                    <label>
+                        <input type="checkbox" id="allowRepeat">
+                        允许重复抽奖
+                    </label>
+                </div>
+            </div>
+
+            <div class="lottery-section">
+                <div class="prize-selector">
+                    <h3>选择抽奖奖项</h3>
+                    <div id="prizeButtons" class="prize-buttons">
+                        <!-- 奖项按钮将通过JavaScript动态添加 -->
+                    </div>
+                </div>
+
+                <div class="prize-info">
+                    <h2>当前奖项：<span id="currentPrize">请先上传奖项</span></h2>
+                    <h3>奖品内容：<span id="currentGift">-</span></h3>
+                    <p>剩余数量：<span id="prizeCount">0</span></p>
+                </div>
+                
+                <div class="lottery-box">
+                    <div id="starField"></div>
+                    <div id="winner"></div>
+                </div>
+                
+                <div class="button-group">
+                    <button id="startBtn" class="start-btn">开始抽奖</button>
+                    <button id="resetBtn" class="reset-btn">重置抽奖</button>
+                </div>
+            </div>
+
+            <div class="result-section">
+                <h3>获奖名单</h3>
+                <div id="winnersList"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/xlsx.full.min.js"></script>
+    <script src="js/keys.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html> 
